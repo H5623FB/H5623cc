@@ -59,59 +59,21 @@ class RoseWine extends Component {
     closingRef.on("value", snapshot => {
       let closing = { id: snapshot.key, text: snapshot.val() };
       let closingqty = closing.text;
-      if(closingqty !== null){
-        this.setState({ closing: closingqty });
-        //this.doSetClosingState(closingqty);
-      }else{
-        // doSetNullClosingState  ();
-      //  function  doSetNullClosingState  () {
-          let nullClosingRef = fire.database().ref("ILEC/Pub/ClosingForm/Rose Wine/Close/00-00-00");
-            nullClosingRef.on("value", snapshot => {
-              let closing = { id: snapshot.key, text: snapshot.val() };
-              let closingqty = closing.text;
-            console.log(closingqty);
-              this.setState({ closing: closingqty });  
-                });
-      // }
-    //  }); 
-    // let doSetClosingState=(closingqty) =>{
-    //   this.setState({ closing: closingqty });
-    // };
-      //var exists = (snapshot.val() !== null);
-    }
-   });
-    //}
-
+        if(closingqty !== null){
+          this.setState({ closing: closingqty });}
+        else{
+    let nullClosingRef = fire.database().ref("ILEC/Pub/ClosingForm/Rose Wine/Close/00-00-00");
+          nullClosingRef.on("value", snapshot => {
+            let closing = { id: snapshot.key, text: snapshot.val() };
+            let closingqty = closing.text;
+          this.setState({ closing: closingqty });  
+              });
+            }
+    });
     
-      
-    //       if(closing.text == null){
-
-    //         let nullClosingRef = fire
-    //           .database()
-    //           .ref("ILEC/Pub/ClosingForm/Rose Wine/Close/00-00-00");
-    //           nullClosingRef.on("value", snapshot => {
-    //             let closing = { id: snapshot.key, text: snapshot.val() };
-    //             let closingqty = closing.text;
-    //             this.setState({ closing: closingqty });
-    //       });
-    //       }else{
-
-    //         let closingRef = fire
-    //         .database()
-    //         .ref("ILEC/Pub/ClosingForm/Rose Wine/Close/" + currDate);
-    //          closingRef.on("value", snapshot => {
-    //             let closing = { id: snapshot.key, text: snapshot.val() };
-    //             let closingqty = closing.text;
-    //            this.setState({ closing: closingqty });
-    //       });
-    //       }
-        
-     
-      
     let ridRef = fire.database().ref("ILEC/Pub/ClosingForm/Rose Wine/rid");
     ridRef.on("value", snapshot => {
       let rid = { id: snapshot.key, text: snapshot.val() };
-      //console.log(rid);
       let ridqty = rid.text;
       this.setState({ rid: ridqty });
     });
