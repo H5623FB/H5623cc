@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { toast } from "react-toastify";
 import fire from "../../../../fbase";
+import Moment from "moment";
 
 import { Items, Wastage, UpdateWastage } from "./softDrinkParts";
 import Submit from "../submit";
@@ -20,15 +21,26 @@ class SoftWastage extends Component {
       let itemnames = items.text;
       this.setState({ items: itemnames });
     });
+    let currDate = this.calcTime("-2");
     let wastageRef = fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/SoftDrinks/Wastage");
+      .ref("ILEC/Pub/ClosingForm/SoftDrinks/Wastage/" + currDate);
     wastageRef.on("value", snapshot => {
       let wastage = { id: snapshot.key, text: snapshot.val() };
       let wastageqty = wastage.text;
-      this.setState({ wastage: wastageqty });
+      if (wastageqty !== null) {
+        this.setState({ wastage: wastageqty });
+      } else {
+        let nullWastageRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/SoftDrinks/Wastage/00-00-00");
+        nullWastageRef.on("value", snapshot => {
+          let wastage = { id: snapshot.key, text: snapshot.val() };
+          let wastageqty = wastage.text;
+          this.setState({ wastage: wastageqty });
+        });
+      }
     });
-
     let ridRef = fire.database().ref("ILEC/Pub/ClosingForm/SoftDrinks/rid");
     ridRef.on("value", snapshot => {
       let rid = { id: snapshot.key, text: snapshot.val() };
@@ -77,14 +89,22 @@ class SoftWastage extends Component {
         return toast.error(errors.message);
       }
     }
+    let currDate = this.calcTime("-2");
     fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/SoftDrinks/Wastage")
+      .ref("ILEC/Pub/ClosingForm/SoftDrinks/Wastage/" + currDate)
       .set(value);
     this.cancelCourse();
   };
   cancelCourse = () => {
     document.getElementById("sdwast").reset();
+  };
+  calcTime = offset => {
+    let d = new Date();
+    let utc = d.getTime() + d.getTimezoneOffset() * 60000;
+    let nd = new Date(utc + 3600000 * offset);
+    let ddmmyy = Moment(nd.toISOString()).format("DD-MM-YY");
+    return ddmmyy;
   };
 
   render() {

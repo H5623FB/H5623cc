@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { toast } from "react-toastify";
 import fire from "../../../../fbase";
+import Moment from "moment";
 
 import {
   Items,
@@ -29,13 +30,25 @@ class BottleBeerDel extends Component {
       let itemnames = items.text;
       this.setState({ items: itemnames });
     });
+    let currDate = this.calcTime("-2");
     let requisitionsRef = fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/BottledBeer/Requisitions");
+      .ref("ILEC/Pub/ClosingForm/BottledBeer/Requisitions/" + currDate);
     requisitionsRef.on("value", snapshot => {
       let requisitions = { id: snapshot.key, text: snapshot.val() };
       let requisitioningqty = requisitions.text;
-      this.setState({ requisitions: requisitioningqty });
+      if (requisitioningqty !== null) {
+        this.setState({ requisitions: requisitioningqty });
+      } else {
+        let nullRequisitionsRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/BottledBeer/Requisitions/00-00-00");
+        nullRequisitionsRef.on("value", snapshot => {
+          let requisitions = { id: snapshot.key, text: snapshot.val() };
+          let requisitionsqty = requisitions.text;
+          this.setState({ requisitions: requisitionsqty });
+        });
+      }
     });
 
     let ridRef = fire.database().ref("ILEC/Pub/ClosingForm/BottledBeer/rid");
@@ -46,19 +59,22 @@ class BottleBeerDel extends Component {
     });
     let deliveredRef = fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/BottledBeer/Delivered");
+      .ref("ILEC/Pub/ClosingForm/BottledBeer/Delivered/" + currDate);
     deliveredRef.on("value", snapshot => {
       let delivered = { id: snapshot.key, text: snapshot.val() };
       let deliveredqty = delivered.text;
-      this.setState({ delivered: deliveredqty });
-    });
-    let differenceRef = fire
-      .database()
-      .ref("ILEC/Pub/ClosingForm/BottledBeer/Difference");
-    differenceRef.on("value", snapshot => {
-      let difference = { id: snapshot.key, text: snapshot.val() };
-      let differenceqty = difference.text;
-      this.setState({ difference: differenceqty });
+      if (deliveredqty !== null) {
+        this.setState({ delivered: deliveredqty });
+      } else {
+        let nulldeliveredRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/BottledBeer/Delivered/00-00-00");
+        nulldeliveredRef.on("value", snapshot => {
+          let delivered = { id: snapshot.key, text: snapshot.val() };
+          let deliveredqty = delivered.text;
+          this.setState({ delivered: deliveredqty });
+        });
+      }
     });
     let parRef = fire.database().ref("ILEC/Pub/ClosingForm/BottledBeer/PAR");
     parRef.on("value", snapshot => {
@@ -107,9 +123,10 @@ class BottleBeerDel extends Component {
         return toast.error(errors.message);
       }
     }
+    let currDate = this.calcTime("-2");
     fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/BottledBeer/Delivered")
+      .ref("ILEC/Pub/ClosingForm/BottledBeer/Delivered/" + currDate)
       .set(value);
     this.cancelCourse();
   };
@@ -117,15 +134,20 @@ class BottleBeerDel extends Component {
     document.getElementById("bbdel").reset();
   };
   acceptAllReq = () => {
+    let currDate = this.calcTime("-2");
     let req = { ...this.state.requisitions };
-    //req.shift();
-    //console.log(req);
     fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/BottledBeer/Delivered")
+      .ref("ILEC/Pub/ClosingForm/BottledBeer/Delivered/" + currDate)
       .set(req);
   };
-
+  calcTime = offset => {
+    let d = new Date();
+    let utc = d.getTime() + d.getTimezoneOffset() * 60000;
+    let nd = new Date(utc + 3600000 * offset);
+    let ddmmyy = Moment(nd.toISOString()).format("DD-MM-YY");
+    return ddmmyy;
+  };
   render() {
     return (
       <React.Fragment>

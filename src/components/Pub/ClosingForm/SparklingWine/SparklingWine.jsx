@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { toast } from "react-toastify";
 import fire from "../../../../fbase";
+import Moment from "moment";
 
 import {
   Items,
@@ -41,30 +42,69 @@ class SparklingWine extends Component {
       let itemnames = items.text;
       this.setState({ items: itemnames });
     });
+    let prevDate = this.calcTime("-23");
     let openRef = fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Open");
+      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Close/" + prevDate);
+
     openRef.on("value", snapshot => {
       let opening = { id: snapshot.key, text: snapshot.val() };
       let openingqty = opening.text;
-      this.setState({ opening: openingqty });
+      if (openingqty !== null) {
+        this.setState({ opening: openingqty });
+      } else {
+        let nullOpeningRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Close/00-00-00");
+        nullOpeningRef.on("value", snapshot => {
+          let opening = { id: snapshot.key, text: snapshot.val() };
+          let openingqty = opening.text;
+          this.setState({ opening: openingqty });
+        });
+      }
     });
+    let currDate = this.calcTime("-2");
     let saleRef = fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Sold");
+      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Sold/" + currDate);
     saleRef.on("value", snapshot => {
       let sale = { id: snapshot.key, text: snapshot.val() };
       let saleqty = sale.text;
-      this.setState({ sale: saleqty });
+      if (saleqty !== null) {
+        this.setState({ sale: saleqty });
+      } else {
+        let nullSaleRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Sold/00-00-00");
+        nullSaleRef.on("value", snapshot => {
+          let sale = { id: snapshot.key, text: snapshot.val() };
+          let saleqty = sale.text;
+          this.setState({ sale: saleqty });
+        });
+      }
     });
+
     let closingRef = fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Close");
+      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Close/" + currDate);
+
     closingRef.on("value", snapshot => {
       let closing = { id: snapshot.key, text: snapshot.val() };
       let closingqty = closing.text;
-      this.setState({ closing: closingqty });
+      if (closingqty !== null) {
+        this.setState({ closing: closingqty });
+      } else {
+        let nullClosingRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Close/00-00-00");
+        nullClosingRef.on("value", snapshot => {
+          let closing = { id: snapshot.key, text: snapshot.val() };
+          let closingqty = closing.text;
+          this.setState({ closing: closingqty });
+        });
+      }
     });
+
     let ridRef = fire.database().ref("ILEC/Pub/ClosingForm/Sparkling Wine/rid");
     ridRef.on("value", snapshot => {
       let rid = { id: snapshot.key, text: snapshot.val() };
@@ -81,20 +121,44 @@ class SparklingWine extends Component {
     });
     let deliveredRef = fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Delivered");
+      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Delivered/" + currDate);
     deliveredRef.on("value", snapshot => {
       let delivered = { id: snapshot.key, text: snapshot.val() };
       let deliveredqty = delivered.text;
-      this.setState({ delivered: deliveredqty });
+      if (deliveredqty !== null) {
+        this.setState({ delivered: deliveredqty });
+      } else {
+        let nulldeliveredRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Delivered/00-00-00");
+        nulldeliveredRef.on("value", snapshot => {
+          let delivered = { id: snapshot.key, text: snapshot.val() };
+          let deliveredqty = delivered.text;
+          this.setState({ delivered: deliveredqty });
+        });
+      }
     });
+
     let differenceRef = fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Difference");
+      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Difference/" + currDate);
     differenceRef.on("value", snapshot => {
       let difference = { id: snapshot.key, text: snapshot.val() };
       let differenceqty = difference.text;
-      this.setState({ difference: differenceqty });
+      if (differenceqty !== null) {
+        this.setState({ difference: differenceqty });
+      } else {
+        let nullDifferenceRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Difference/00-00-00");
+        nullDifferenceRef.on("value", snapshot => {
+          let difference = { id: snapshot.key, text: snapshot.val() };
+          let differenceqty = difference.text;
+          this.setState({ difference: differenceqty });
+        });
+      }
     });
+
     let parRef = fire.database().ref("ILEC/Pub/ClosingForm/Sparkling Wine/PAR");
     parRef.on("value", snapshot => {
       let par = { id: snapshot.key, text: snapshot.val() };
@@ -103,19 +167,44 @@ class SparklingWine extends Component {
     });
     let transfersRef = fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Transfers");
+      .ref(
+        "ILEC/Pub/ClosingForm/Aperitifs/Sparkling Wine/Transfers/" + currDate
+      );
     transfersRef.on("value", snapshot => {
       let transfers = { id: snapshot.key, text: snapshot.val() };
       let transfersqty = transfers.text;
-      this.setState({ transfers: transfersqty });
+      if (transfersqty !== null) {
+        this.setState({ transfers: transfersqty });
+      } else {
+        let nullTransfersRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Transfers/00-00-00");
+        nullTransfersRef.on("value", snapshot => {
+          let transfers = { id: snapshot.key, text: snapshot.val() };
+          let transfersqty = transfers.text;
+          this.setState({ transfers: transfersqty });
+        });
+      }
     });
+
     let wastageRef = fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Wastage");
+      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Wastage/" + currDate);
     wastageRef.on("value", snapshot => {
       let wastage = { id: snapshot.key, text: snapshot.val() };
       let wastageqty = wastage.text;
-      this.setState({ wastage: wastageqty });
+      if (wastageqty !== null) {
+        this.setState({ wastage: wastageqty });
+      } else {
+        let nullWastageRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Wastage/00-00-00");
+        nullWastageRef.on("value", snapshot => {
+          let wastage = { id: snapshot.key, text: snapshot.val() };
+          let wastageqty = wastage.text;
+          this.setState({ wastage: wastageqty });
+        });
+      }
     });
   }
   handleChange = e => {
@@ -158,17 +247,25 @@ class SparklingWine extends Component {
         return toast.error(errors.message);
       }
     }
+    let currDate = this.calcTime("-2");
     fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Close")
+      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Close/" + currDate)
       .set(value);
     this.cancelCourse();
-    this.calcDiff(value);
+    this.calcDiff(value, currDate);
   };
   cancelCourse = () => {
     document.getElementById("swine").reset();
   };
-  calcDiff = value => {
+  calcTime = offset => {
+    let d = new Date();
+    let utc = d.getTime() + d.getTimezoneOffset() * 60000;
+    let nd = new Date(utc + 3600000 * offset);
+    let ddmmyy = Moment(nd.toISOString()).format("DD-MM-YY");
+    return ddmmyy;
+  };
+  calcDiff = (value, currDate) => {
     let closing = value;
     let opening = this.state.opening;
     let delivered = this.state.delivered;
@@ -185,7 +282,7 @@ class SparklingWine extends Component {
     });
     fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Difference")
+      .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Difference/" + currDate)
       .set(diff);
   };
   render() {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { toast } from "react-toastify";
 import fire from "../../../../fbase";
+import Moment from "moment";
 
 import { Items, PAR, Requisitions, UpdateRequisitions } from "./WhiteWineParts";
 import Submit from "../submit";
@@ -21,13 +22,25 @@ class WhiteWineReq extends Component {
       let itemnames = items.text;
       this.setState({ items: itemnames });
     });
+    let currDate = this.calcTime("-2");
     let requisitionsRef = fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/White Wine/Requisitions");
+      .ref("ILEC/Pub/ClosingForm/White Wine/Requisitions/" + currDate);
     requisitionsRef.on("value", snapshot => {
       let requisitions = { id: snapshot.key, text: snapshot.val() };
       let requisitioningqty = requisitions.text;
-      this.setState({ requisitions: requisitioningqty });
+      if (requisitioningqty !== null) {
+        this.setState({ requisitions: requisitioningqty });
+      } else {
+        let nullRequisitionsRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/White Wine/Requisitions/00-00-00");
+        nullRequisitionsRef.on("value", snapshot => {
+          let requisitions = { id: snapshot.key, text: snapshot.val() };
+          let requisitionsqty = requisitions.text;
+          this.setState({ requisitions: requisitionsqty });
+        });
+      }
     });
 
     let ridRef = fire.database().ref("ILEC/Pub/ClosingForm/White Wine/rid");
@@ -36,22 +49,7 @@ class WhiteWineReq extends Component {
       let ridqty = rid.text;
       this.setState({ rid: ridqty });
     });
-    // let deliveredRef = fire
-    //   .database()
-    //   .ref("ILEC/Pub/ClosingForm/White Wine/Delivered");
-    // deliveredRef.on("value", snapshot => {
-    //   let delivered = { id: snapshot.key, text: snapshot.val() };
-    //   let deliveredqty = delivered.text;
-    //   this.setState({ delivered: deliveredqty });
-    // });
-    let differenceRef = fire
-      .database()
-      .ref("ILEC/Pub/ClosingForm/White Wine/Difference");
-    differenceRef.on("value", snapshot => {
-      let difference = { id: snapshot.key, text: snapshot.val() };
-      let differenceqty = difference.text;
-      this.setState({ difference: differenceqty });
-    });
+
     let parRef = fire.database().ref("ILEC/Pub/ClosingForm/White Wine/PAR");
     parRef.on("value", snapshot => {
       let par = { id: snapshot.key, text: snapshot.val() };
@@ -99,16 +97,23 @@ class WhiteWineReq extends Component {
         return toast.error(errors.message);
       }
     }
+    let currDate = this.calcTime("-2");
     fire
       .database()
-      .ref("ILEC/Pub/ClosingForm/White Wine/Requisitions")
+      .ref("ILEC/Pub/ClosingForm/White Wine/Requisitions/" + currDate)
       .set(value);
     this.cancelCourse();
   };
   cancelCourse = () => {
     document.getElementById("wwreq").reset();
   };
-
+  calcTime = offset => {
+    let d = new Date();
+    let utc = d.getTime() + d.getTimezoneOffset() * 60000;
+    let nd = new Date(utc + 3600000 * offset);
+    let ddmmyy = Moment(nd.toISOString()).format("DD-MM-YY");
+    return ddmmyy;
+  };
   render() {
     return (
       <React.Fragment>
