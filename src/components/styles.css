@@ -60,10 +60,12 @@
   /* position: fixed; */
   /* align-self: flex-end; */
   top: 2.5rem;
-  width: 12rem;
+  line-height: 65px;
+  font-size: 17px;
+  width: 11rem;
   color: black;
   background-color: rgb(198, 198, 198);
-  height: 1.6rem;
+  height: 4.5rem;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
@@ -84,10 +86,10 @@
   /* position: fixed;
   align-self: flex-end; */
   top: 2.5rem;
-  width: 2.3rem;
+  width: 1.5rem;
+  height: 4rem;
   color: black;
   background-color: rgb(198, 198, 198);
-  height: 1.6rem;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
@@ -95,6 +97,7 @@
   font-size: 13px;
   grid-row-start: 1;
   font-weight: bold;
+  writing-mode: vertical-rl;
 }
 .opening {
   display: grid;
@@ -109,10 +112,10 @@
   /* position: fixed;
   align-self: flex-end; */
   top: 2.5rem;
-  width: 3rem;
+  width: 1.5rem;
   color: black;
   background-color: rgb(198, 198, 198);
-  height: 1.6rem;
+  height: 4rem;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
@@ -120,6 +123,7 @@
   font-size: 13px;
   grid-row-start: 1;
   font-weight: bold;
+  writing-mode: vertical-rl;
 }
 
 .delivered {
@@ -135,10 +139,10 @@
   /* position: fixed;
   align-self: flex-end; */
   top: 2.5rem;
-  width: 4.5rem;
+  width: 1.5rem;
   color: black;
   background-color: rgb(198, 198, 198);
-  height: 1.6rem;
+  height: 4rem;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
@@ -146,6 +150,7 @@
   font-size: 12px;
   grid-row-start: 1;
   font-weight: bold;
+  writing-mode: vertical-rl;
 }
 .transfers {
   display: grid;
@@ -160,10 +165,10 @@
   /* position: fixed;
   align-self: flex-end; */
   top: 2.5rem;
-  width: 4.5rem;
+  width: 1.5rem;
   color: black;
   background-color: rgb(198, 198, 198);
-  height: 1.6rem;
+  height: 4rem;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
@@ -171,6 +176,7 @@
   font-size: 13px;
   grid-row-start: 1;
   font-weight: bold;
+  writing-mode: vertical-rl;
 }
 .wastage {
   display: grid;
@@ -185,10 +191,10 @@
   /* position: fixed;
   align-self: flex-end; */
   top: 2.5rem;
-  width: 4.3rem;
+  width: 1.5rem;
   color: black;
   background-color: rgb(198, 198, 198);
-  height: 1.6rem;
+  height: 4rem;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
@@ -196,6 +202,7 @@
   font-size: 13px;
   grid-row-start: 1;
   font-weight: bold;
+  writing-mode: vertical-rl;
 }
 .sale {
   display: grid;
@@ -210,10 +217,10 @@
   /* position: fixed;
   align-self: flex-end; */
   top: 2.5rem;
-  width: 2.8rem;
+  width: 1.5rem;
   color: black;
   background-color: rgb(198, 198, 198);
-  height: 1.6rem;
+  height: 4rem;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
@@ -221,6 +228,7 @@
   font-size: 13px;
   grid-row-start: 1;
   font-weight: bold;
+  writing-mode: vertical-rl;
 }
 .closing {
   display: grid;
@@ -237,16 +245,17 @@
   /* position: fixed;
   align-self: flex-end; */
   top: 2.5rem;
-  width: 3.5rem;
+  width: 1.5rem;
   color: black;
   background-color: rgb(198, 198, 198);
-  height: 1.6rem;
+  height: 4rem;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
   padding: 2px;
   grid-row-start: 1;
   font-weight: bold;
+  writing-mode: vertical-rl;
 }
 .difference {
   display: grid;
@@ -262,10 +271,10 @@
   /* position: fixed;
   align-self: flex-end; */
   top: 2.5rem;
-  width: 2.7rem;
+  width: 1.5rem;
   color: black;
   background-color: rgb(198, 198, 198);
-  height: 1.6rem;
+  height: 4rem;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
@@ -273,6 +282,7 @@
   font-size: 13px;
   grid-row-start: 1;
   font-weight: bold;
+  writing-mode: vertical-rl;
 }
 .inpute {
   display: grid;
@@ -287,18 +297,21 @@
 .h_inpute {
   /* position: fixed; */
   /* align-self: flex-end; */
+  line-height: 50px;
+  font-size: 14px;
   top: 2.5rem;
   margin-bottom: 0.7rem;
-  width: 4rem;
+  width: 5rem;
   color: black;
   background-color: rgb(198, 198, 198);
-  height: 1.6rem;
+  height: 4rem;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
   padding: 2px;
   grid-row-start: 1;
   font-weight: bold;
+ 
 }
 
 .spacer {
