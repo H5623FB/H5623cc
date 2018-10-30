@@ -14,7 +14,7 @@ class LiqueursWastage extends Component {
     rid: [],
     value: ""
   };
-  componentWillMount() {
+  componentDidMount() {
     let itemRef = fire.database().ref("ILEC/Pub/ClosingForm/White Wine/Items");
     itemRef.on("value", snapshot => {
       let items = { id: snapshot.key, text: snapshot.val() };

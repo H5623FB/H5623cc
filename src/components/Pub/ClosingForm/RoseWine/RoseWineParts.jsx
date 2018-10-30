@@ -109,8 +109,7 @@ const UpdateClosing = ({ rid, change }) => (
       {rid.map(i => (
         <input
           onChange={change}
-          size="7"
-          // className="form-control-sm"
+          size="1"
           type="text"
           placeholder="Closing"
           key={i}

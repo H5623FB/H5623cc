@@ -20,7 +20,7 @@ class BottleBeerReq extends Component {
     rid: [],
     value: ""
   };
-  componentWillMount() {
+  componentDidMount() {
     let itemRef = fire.database().ref("ILEC/Pub/ClosingForm/BottledBeer/Items");
     itemRef.on("value", snapshot => {
       let items = { id: snapshot.key, text: snapshot.val() };

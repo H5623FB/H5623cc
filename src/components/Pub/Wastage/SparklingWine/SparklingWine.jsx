@@ -14,7 +14,7 @@ class SparklingWineWastage extends Component {
     rid: [],
     value: ""
   };
-  componentWillMount() {
+  componentDidMount() {
     let itemRef = fire
       .database()
       .ref("ILEC/Pub/ClosingForm/Sparkling Wine/Items");

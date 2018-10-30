@@ -2,23 +2,15 @@
   display: grid;
   justify-items: center;
   overflow: auto;
-  /* align-items: start; */
-
-  /* justify-content: strech; */
-  /* flex-direction: column; */
-  /* grid-auto-flow: auto;
-  text-align: center;
-  justify-items: center;
-  justify-content: center; */
 }
 
 .wrapper {
   display: grid;
   grid-gap: 2px;
-  grid-column-gap: 10px;
+  grid-column-gap: 1.5px;
   grid-auto-flow: column;
-  padding: 5px;
-  font-size: 13px;
+  padding: 0px;
+  font-size: 9px;
   text-align: center;
   justify-content: center;
   flex-direction: column;
@@ -33,75 +25,57 @@
   grid-row-start: 1;
   margin-top: 0rem;
   margin-bottom: 0rem;
-  width: auto;
-  font-weight: bold;
-  /* position: sticky;
-  top: 0;
-  padding: 5px; */
-  /* position: fixed;
-  left: 0;
-  right: 0;
-  top: 10; */
+  width: auto; 
 }
 
 .items {
   display: grid;
-  padding: 1px;
+  padding: 0px;
   align-items: stretch;
   text-align: center;
-  font-weight: bold;
   grid-column-start: 1;
   grid-row-start: 2;
   margin: 0;
-  width: 12rem;
-  /* cursor: -webkit-grab; cursor: grab; */
+  width: 8rem;
 }
 .h_items {
-  /* position: fixed; */
-  /* align-self: flex-end; */
   top: 2.5rem;
-  line-height: 65px;
-  font-size: 17px;
-  width: 11rem;
+  line-height: 30px;
+  font-size: 12px;
+  width: 7rem;
   color: black;
-  background-color: rgb(198, 198, 198);
-  height: 4.5rem;
+  background-color: rgba(128, 128, 128, 0.465);
+  height: 2rem;
   border: 2px solid white;
   border-radius: 10px;
   text-align: center;
-  padding: 1px;
+  padding: 0px;
   grid-row-start: 1;
-  font-weight: bold;
 }
 .par {
   display: grid;
-  padding: 5px;
-  text-align: center;
+  padding: 0px;
   grid-column-start: 2;
   grid-row-start: 2;
   margin: 0;
-  width: 2.3rem;
+  width: 1rem;
 }
 .h_par {
-  /* position: fixed;
-  align-self: flex-end; */
   top: 2.5rem;
-  width: 1.5rem;
-  height: 4rem;
+  width: 1rem;
+  height: 1.8rem;
   color: black;
-  background-color: rgb(198, 198, 198);
-  border: 2px solid white;
+  background-color: rgba(128, 128, 128, 0.465);
+  border: 0px solid white;
   border-radius: 10px;
-  text-align: center;
-  padding: 2px;
-  font-size: 13px;
+  padding: 0px;
+  font-size: 9px;
   grid-row-start: 1;
-  font-weight: bold;
   writing-mode: vertical-rl;
 }
 .opening {
   display: grid;
-  padding: 5px;
+  padding: 0px;
   text-align: center;
   grid-column-start: 3;
   grid-row-start: 2;
@@ -109,26 +83,22 @@
   width: 3rem;
 }
 .h_opening {
-  /* position: fixed;
-  align-self: flex-end; */
   top: 2.5rem;
-  width: 1.5rem;
+  width: 1rem;
   color: black;
-  background-color: rgb(198, 198, 198);
-  height: 4rem;
-  border: 2px solid white;
+  background-color: rgba(128, 128, 128, 0.465);
+  height: 2rem;
+  border: 0.5px solid white;
   border-radius: 10px;
-  text-align: center;
-  padding: 2px;
-  font-size: 13px;
+  padding: 0px;
+  font-size: 9px;
   grid-row-start: 1;
-  font-weight: bold;
   writing-mode: vertical-rl;
 }
 
 .delivered {
   display: grid;
-  padding: 5px;
+  padding: 0px;
   text-align: center;
   grid-column-start: 4;
   grid-row-start: 2;
@@ -136,25 +106,21 @@
   width: 4.5rem;
 }
 .h_delivered {
-  /* position: fixed;
-  align-self: flex-end; */
   top: 2.5rem;
-  width: 1.5rem;
+  width: 1rem;
   color: black;
-  background-color: rgb(198, 198, 198);
-  height: 4rem;
-  border: 2px solid white;
+  background-color: rgba(128, 128, 128, 0.465);
+  height: 2.0rem;
+  border: 0px solid white;
   border-radius: 10px;
-  text-align: center;
-  padding: 2px;
-  font-size: 12px;
+  padding: 0px;
+  font-size: 7px;
   grid-row-start: 1;
-  font-weight: bold;
   writing-mode: vertical-rl;
 }
 .transfers {
   display: grid;
-  padding: 5px;
+  padding: 0px;
   text-align: center;
   grid-column-start: 5;
   grid-row-start: 2;
@@ -162,25 +128,21 @@
   width: 4.5rem;
 }
 .h_transfers {
-  /* position: fixed;
-  align-self: flex-end; */
   top: 2.5rem;
-  width: 1.5rem;
+  width: 1rem;
   color: black;
-  background-color: rgb(198, 198, 198);
-  height: 4rem;
-  border: 2px solid white;
+  background-color: rgba(128, 128, 128, 0.465);
+  height: 2rem;
+  border: 0px solid white;
   border-radius: 10px;
-  text-align: center;
-  padding: 2px;
-  font-size: 13px;
+  padding: 0px;
+  font-size: 9px;
   grid-row-start: 1;
-  font-weight: bold;
   writing-mode: vertical-rl;
 }
 .wastage {
   display: grid;
-  padding: 5px;
+  padding: 0px;
   text-align: center;
   grid-column-start: 6;
   grid-row-start: 2;
@@ -188,25 +150,21 @@
   width: 4.3rem;
 }
 .h_wastage {
-  /* position: fixed;
-  align-self: flex-end; */
   top: 2.5rem;
-  width: 1.5rem;
+  width: 1rem;
   color: black;
-  background-color: rgb(198, 198, 198);
-  height: 4rem;
-  border: 2px solid white;
+  background-color: rgba(128, 128, 128, 0.465);
+  height: 2rem;
+  border: 0px solid white;
   border-radius: 10px;
-  text-align: center;
-  padding: 2px;
-  font-size: 13px;
+  padding: 0px;
+  font-size: 7px;
   grid-row-start: 1;
-  font-weight: bold;
   writing-mode: vertical-rl;
 }
 .sale {
   display: grid;
-  padding: 5px;
+  padding: 0px;
   text-align: center;
   grid-column-start: 7;
   grid-row-start: 2;
@@ -214,26 +172,21 @@
   width: 2.8rem;
 }
 .h_sale {
-  /* position: fixed;
-  align-self: flex-end; */
   top: 2.5rem;
-  width: 1.5rem;
+  width: 1rem;
   color: black;
-  background-color: rgb(198, 198, 198);
-  height: 4rem;
-  border: 2px solid white;
+  background-color: rgba(128, 128, 128, 0.465);
+  height: 2rem;
+  border: 0px solid white;
   border-radius: 10px;
-  text-align: center;
-  padding: 2px;
-  font-size: 13px;
+  padding: 0px;
+  font-size: 9px;
   grid-row-start: 1;
-  font-weight: bold;
   writing-mode: vertical-rl;
 }
 .closing {
   display: grid;
-  padding: 5px;
-  font-weight: bold;
+  padding: 0px;
   text-align: center;
   color: red;
   grid-column-start: 8;
@@ -242,24 +195,21 @@
   width: 3.5rem;
 }
 .h_closing {
-  /* position: fixed;
-  align-self: flex-end; */
   top: 2.5rem;
-  width: 1.5rem;
+  width: 1rem;
   color: black;
-  background-color: rgb(198, 198, 198);
-  height: 4rem;
-  border: 2px solid white;
+  background-color: rgba(128, 128, 128, 0.465);
+  height: 2rem;
+  border: 0px solid white;
   border-radius: 10px;
-  text-align: center;
-  padding: 2px;
+  padding: 0px;
   grid-row-start: 1;
-  font-weight: bold;
+  font-size: 8px;
   writing-mode: vertical-rl;
 }
 .difference {
   display: grid;
-  padding: 5px;
+  padding: 0px;
   text-align: center;
   grid-column-start: 9;
   grid-row-start: 2;
@@ -268,20 +218,16 @@
   width: 2.7rem;
 }
 .h_difference {
-  /* position: fixed;
-  align-self: flex-end; */
   top: 2.5rem;
-  width: 1.5rem;
+  width: 1rem;
   color: black;
-  background-color: rgb(198, 198, 198);
-  height: 4rem;
-  border: 2px solid white;
+  background-color: rgba(128, 128, 128, 0.465);
+  height: 2rem;
+  border: 0px solid white;
   border-radius: 10px;
-  text-align: center;
-  padding: 2px;
-  font-size: 13px;
+  padding: 0px;
+  font-size: 9px;
   grid-row-start: 1;
-  font-weight: bold;
   writing-mode: vertical-rl;
 }
 .inpute {
@@ -295,22 +241,18 @@
   grid-row-gap: 0.05rem;
 }
 .h_inpute {
-  /* position: fixed; */
-  /* align-self: flex-end; */
-  line-height: 50px;
-  font-size: 14px;
+  line-height: 35px;
+  font-size: 11px;
   top: 2.5rem;
   margin-bottom: 0.7rem;
-  width: 5rem;
+  width: 3rem;
   color: black;
-  background-color: rgb(198, 198, 198);
-  height: 4rem;
-  border: 2px solid white;
+  background-color: rgba(128, 128, 128, 0.465);
+  height: 2.1rem;
+  border: 0px solid white;
   border-radius: 10px;
-  text-align: center;
-  padding: 2px;
+  padding: 0px;
   grid-row-start: 1;
-  font-weight: bold;
  
 }
 
@@ -348,8 +290,6 @@
   margin-bottom: 0.1rem;
   border-radius: 8px;
   border: 1.2px solid rgb(244, 244, 244);
-  /* margin-top:0.12rem;
-  margin-bottom:1.24rem; */
   text-align: right;
   background-color: rgb(248, 248, 248);
 }
@@ -364,7 +304,6 @@
 }
 
 .print {
-  /* display: grid; */
   justify-content: left;
   grid-column-start: 13;
   grid-row-start: 1;

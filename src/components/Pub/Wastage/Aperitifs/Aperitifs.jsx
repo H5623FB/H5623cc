@@ -14,7 +14,7 @@ class AperitifsWastage extends Component {
     rid: [],
     value: ""
   };
-  componentWillMount() {
+  componentDidMount() {
     let itemRef = fire.database().ref("ILEC/Pub/ClosingForm/Aperitifs/Items");
     itemRef.on("value", snapshot => {
       let items = { id: snapshot.key, text: snapshot.val() };

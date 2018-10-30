@@ -23,7 +23,7 @@ class DraughtBeerDel extends Component {
     delivered: [],
     value: ""
   };
-  componentWillMount() {
+  componentDidMount() {
     let itemRef = fire
       .database()
       .ref("ILEC/Pub/ClosingForm/Draught Beer & Cider/Items");

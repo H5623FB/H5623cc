@@ -14,7 +14,7 @@ class DraughtBeerWastage extends Component {
     rid: [],
     value: ""
   };
-  componentWillMount() {
+  componentDidMount() {
     let itemRef = fire
       .database()
       .ref("ILEC/Pub/ClosingForm/Draught Beer & Cider/Items");
