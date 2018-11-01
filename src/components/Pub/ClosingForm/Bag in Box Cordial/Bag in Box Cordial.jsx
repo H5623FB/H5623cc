@@ -11,7 +11,7 @@ import {
   Delivered,
   Difference,
   PAR,
-  // Transfers,
+  Transfers,
   Wastage,
   UpdateClosing
 } from "./Bag in Box CordialParts";
@@ -28,7 +28,7 @@ class BAGinBoxCordial extends Component {
     comments: [],
     difference: [],
     par: [],
-    // transfers: [],
+    transfers: [],
     wastage: [],
     rid: [],
     value: ""
@@ -169,25 +169,25 @@ class BAGinBoxCordial extends Component {
       let parqty = par.text;
       this.setState({ par: parqty });
     });
-    // let transfersRef = fire
-    //   .database()
-    //   .ref("ILEC/Pub/ClosingForm/BAG in Box-Cordial/Transfers/" + currDate);
-    // transfersRef.on("value", snapshot => {
-    //   let transfers = { id: snapshot.key, text: snapshot.val() };
-    //   let transfersqty = transfers.text;
-    //   if (transfersqty !== null) {
-    //     this.setState({ transfers: transfersqty });
-    //   } else {
-    //     let nullTransfersRef = fire
-    //       .database()
-    //       .ref("ILEC/Pub/ClosingForm/BAG in Box-Cordial/Transfers/00-00-00");
-    //     nullTransfersRef.on("value", snapshot => {
-    //       let transfers = { id: snapshot.key, text: snapshot.val() };
-    //       let transfersqty = transfers.text;
-    //       this.setState({ transfers: transfersqty });
-    //     });
-    //   }
-    // });
+    let transfersRef = fire
+      .database()
+      .ref("ILEC/Pub/ClosingForm/BAG in Box-Cordial/Transfers/" + currDate);
+    transfersRef.on("value", snapshot => {
+      let transfers = { id: snapshot.key, text: snapshot.val() };
+      let transfersqty = transfers.text;
+      if (transfersqty !== null) {
+        this.setState({ transfers: transfersqty });
+      } else {
+        let nullTransfersRef = fire
+          .database()
+          .ref("ILEC/Pub/ClosingForm/BAG in Box-Cordial/Transfers/00-00-00");
+        nullTransfersRef.on("value", snapshot => {
+          let transfers = { id: snapshot.key, text: snapshot.val() };
+          let transfersqty = transfers.text;
+          this.setState({ transfers: transfersqty });
+        });
+      }
+    });
 
     let wastageRef = fire
       .database()
@@ -296,7 +296,7 @@ class BAGinBoxCordial extends Component {
           <PAR par={this.state.par} />
           <Opening opening={this.state.opening} />
           <Delivered delivered={this.state.delivered} />
-          {/* <Transfers transfers={this.state.transfers} /> */}
+          <Transfers transfers={this.state.transfers} />
           <Wastage wastage={this.state.wastage} />
           <Sale sale={this.state.sale} />
           <Closing closing={this.state.closing} />
